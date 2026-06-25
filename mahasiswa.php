@@ -1,5 +1,15 @@
+<?php
+    
+    require 'fungsi.php';
+    $query = "SELECT * FROM mahasiswa"; /// perintah 
+    $mahasiswas = tampildata($query); /// wadah berisi data
+  
+?>
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,23 +51,32 @@
             <th>No. HP</th>
             <th>Foto</th>
             <th>Aksi</th>            
-        </tr>       
+        </tr> 
+        <?php 
+            $no = 1;
+            foreach($mahasiswas as $mhs)
+            {
+        ?>
         <tr>
-            <td align="center">1</td>
-            <td>M. Zulfikar Dzulkarnain</td>
-            <td>3322114545</td>
-            <td align="center">Teknologi Informasi</td>
-            <td align="center">zul@gmail.com</td>
-            <td align="center">0857869776543</td>
-            <td><img src="assets/images/foto.jpg" width="70px" /></td>  
+            <td align="center"><?= $no ?></td>
+            <td><?php echo $mhs["nama"] ?></td>
+            <td><?php echo $mhs["nim"] ?></td>
+            <td align="center"><?php echo $mhs["jurusan"] ?></td>
+            <td align="center"><?php echo $mhs["email"] ?></td>
+            <td align="center"><?php echo $mhs["no_hp"] ?></td>
+            <td><img src="assets/images/<?php echo $mhs["no_hp"] ?>" width="70px" /></td>  
             <td>
                 <a href="editdata.php"><button>Edit</button></a> | 
                 <a href="deletedata.php"><button>Hapus</button></a>
             </td>          
         </tr>
+        <?php 
+            $no++;
+            }
+        ?>
     </table>
     <hr/>
-    <table border="1" cellpadding="30px">
+    <!-- <table border="1" cellpadding="30px">
         <tr>
             <td>1,1</td>
             <td>1,2</td>
@@ -68,13 +87,13 @@
             <td>2,1</td>
             <td colspan="2" rowspan="2" align="center">?</td>
             <td>2,4</td>
-            <!-- <td>2</td>         -->
+            <td>2</td>   
         </tr>
         <tr>
             <td>3,1</td>
             <td colspan="2">3,4</td>
-            <!-- <td>3</td> -->
-            <!-- <td>3</td>         -->
+             <td>3</td> 
+            <td>3</td>  
         </tr>
         <tr>
             <td>4,1</td>
@@ -82,6 +101,6 @@
             <td>4,3</td>
             <td>4,4</td>        
         </tr>
-    </table>
+    </table> -->
 </body>
 </html>
